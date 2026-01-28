@@ -57,17 +57,17 @@ export const projects: Project[] = ${JSON.stringify(updatedProjects, null, 2)};`
   };
 
   return (
-    <div className="h-screen overflow-hidden bg-[var(--background)] grid-bg">
-      <div className="relative h-full flex flex-col lg:flex-row">
-        {/* Left Sidebar - Fixed */}
-        <div className="lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-[420px] px-8 sm:px-10 lg:pl-16 lg:pr-12 py-12 flex items-start">
+    <div className="min-h-screen lg:h-screen lg:overflow-hidden bg-[var(--background)] grid-bg">
+      <div className="relative lg:h-full flex flex-col lg:flex-row">
+        {/* Left Sidebar - Fixed on desktop, normal on mobile */}
+        <div className="lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-[420px] px-8 sm:px-10 lg:pl-16 lg:pr-12 py-12 lg:flex lg:items-start">
           <Sidebar />
         </div>
 
         {/* Middle Content Area - Projects */}
-        <div className="flex-1 lg:ml-[420px] lg:mr-[450px] h-full flex flex-col">
-          {/* Fixed Projects Header */}
-          <div className="flex-shrink-0 px-8 sm:px-10 lg:px-16 pt-20">
+        <div className="flex-1 lg:ml-[420px] lg:mr-[450px] lg:h-full flex flex-col">
+          {/* Fixed Projects Header on desktop, normal on mobile */}
+          <div className="flex-shrink-0 px-8 sm:px-10 lg:px-16 pt-8 lg:pt-20">
             {/* Header with Admin Button */}
             <div className="mb-8">
               <div className="flex items-start justify-between mb-6">
@@ -121,8 +121,8 @@ export const projects: Project[] = ${JSON.stringify(updatedProjects, null, 2)};`
           </div>
 
           {/* Scrollable Project Grid */}
-          <div className="flex-1 overflow-y-auto custom-scrollbar px-8 sm:px-10 lg:px-16 pb-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 pt-4">
+          <div className="flex-1 lg:overflow-y-auto custom-scrollbar px-8 sm:px-10 lg:px-16 pb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 pt-4">
               {projects.map((project, index) => (
                 <ProjectCard
                   key={index}
@@ -144,9 +144,9 @@ export const projects: Project[] = ${JSON.stringify(updatedProjects, null, 2)};`
           </div>
         </div>
 
-        {/* Contact Form Section - Fixed on right side */}
-        <div className="hidden xl:flex lg:fixed lg:right-0 lg:top-0 lg:h-screen lg:w-[450px] lg:flex-col lg:justify-start lg:pt-20 px-12">
-          <div className="bg-white border-4 border-[var(--foreground)] p-10 relative w-full">
+        {/* Contact Form Section - Fixed on desktop, normal on mobile */}
+        <div className="px-8 sm:px-10 py-12 xl:px-12 xl:fixed xl:right-0 xl:top-0 xl:h-screen xl:w-[450px] xl:flex xl:flex-col xl:justify-start xl:pt-20">
+          <div className="bg-white border-4 border-[var(--foreground)] p-8 lg:p-10 relative w-full max-w-md mx-auto xl:max-w-none">
             {/* Corner accents */}
             <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[var(--primary)]" />
             <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[var(--primary)]" />
