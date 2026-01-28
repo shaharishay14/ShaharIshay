@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Shahar Ishay - Full Stack Developer",
   description: "SaaS Developer. Founder of SuperSave.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

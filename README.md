@@ -1,101 +1,49 @@
-# Shahar Ishay - Portfolio Website
+# Shahar Ishay - Portfolio
 
-A minimalist portfolio website inspired by marclou.com, built with Next.js 14, Tailwind CSS, and Recharts.
-
-## Features
-
-- **Responsive Design**: Mobile-first approach with sticky sidebar on desktop
-- **Project Showcase**: Grid layout with status badges and sparkline charts
-- **Hidden Admin Mode**: Secret UI for generating project JSON without a backend
-
-## Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view the site.
-
-## Hidden Admin Mode
-
-The portfolio includes a secure admin mode for managing projects without a backend.
-
-### Setup
-
-1. Copy `.env.example` to `.env.local`
-2. Set your secret admin URL:
-   ```bash
-   NEXT_PUBLIC_MODE_URL=your_super_secret_key_here
-   ```
-3. **Important**: Change the default value to something secure and unique!
-
-### Accessing Admin Mode
-
-Visit: `http://localhost:3000/?mode=YOUR_SECRET_KEY`
-
-Replace `YOUR_SECRET_KEY` with the value you set in `NEXT_PUBLIC_MODE_URL`.
-
-### Admin Features
-
-**Full CRUD Operations:**
-
-- **CREATE**: Click "ADD" button → Fill form → Copy JSON → Paste to `data/projects.ts`
-- **READ**: All projects visible in normal mode
-- **UPDATE**: Click orange pencil icon → Edit fields → Save → Replace entire file content
-- **DELETE**: Click red trash icon → Confirm → Replace entire file content
-
-Each operation copies the complete file (with TypeScript interface) to your clipboard for easy paste into `data/projects.ts`.
-
-**Editable Fields:**
-- Project name and description
-- Status (Live, Beta, Coming Soon, Development)
-- Optional link
-- Sparkline metrics (comma-separated numbers)
-
-## Project Structure
-
-```
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
-├── components/
-│   ├── AddProjectModal.tsx
-│   ├── ProjectCard.tsx
-│   ├── Sidebar.tsx
-│   └── Sparkline.tsx
-├── data/
-│   └── projects.ts
-└── lib/
-    └── utils.ts
-```
+Personal portfolio website showcasing projects and contact information.
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS v3
-- **Icons**: Lucide React
-- **Charts**: Recharts
-- **Language**: TypeScript
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Resend (for contact form emails)
 
-## Customization
+## Getting Started
 
-Update your profile in `components/Sidebar.tsx`:
-- Name, role, and bio
-- Social links (GitHub, Twitter, LinkedIn)
+1. Install dependencies:
+```bash
+npm install
+```
 
-Add projects in `data/projects.ts` or use the admin mode to generate JSON.
+2. Create `.env.local` file with:
+```
+NEXT_PUBLIC_MODE_URL=your_admin_secret
+RESEND_API_KEY=your_resend_api_key
+```
 
-## License
+3. Run development server:
+```bash
+npm run dev
+```
 
-MIT
+4. Open [http://localhost:3000](http://localhost:3000)
+
+## Admin Mode
+
+Access admin features to add/edit projects:
+- Visit: `/?mode=YOUR_SECRET_HERE`
+
+## Deploy to Vercel
+
+1. Push code to GitHub
+2. Import repository in Vercel
+3. Add environment variables
+4. Deploy
+
+## Features
+
+- Project showcase with live metrics
+- Contact form with email notifications
+- Responsive brutalist design
+- Admin mode for project management
