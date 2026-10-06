@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <!-- Three cards on a drum: the front card square-on, its neighbours turning away in perspective -->
+  <rect width="32" height="32" rx="8" fill="#17181C"/>
+  <rect x="12" y="7.5" width="8" height="17" rx="1.75" fill="#F3F2EF"/>
+  <path d="M10 9.25 L6.25 10.75 L6.25 21.25 L10 22.75 Z" fill="#85868C" stroke="#85868C" stroke-width="1" stroke-linejoin="round"/>
+  <path d="M22 9.25 L25.75 10.75 L25.75 21.25 L22 22.75 Z" fill="#85868C" stroke="#85868C" stroke-width="1" stroke-linejoin="round"/>
+</svg>

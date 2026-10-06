@@ -43,72 +43,60 @@ export function ContactForm() {
     }
   };
 
+  const field =
+    "w-full rounded-2xl border border-line bg-bg px-4 py-3 text-[15px] text-ink placeholder:text-muted/70 outline-none transition-colors focus:border-accent/50 disabled:opacity-60";
+
   return (
-    <div className="space-y-5">
-      <div className="flex items-center gap-2 text-sm font-mono text-gray-500 uppercase tracking-widest mb-2">
-        <span className="text-[var(--primary)]">///</span>
-        <span>CONTACT</span>
-      </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] opacity-0 group-hover:opacity-20 blur transition duration-300" />
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="YOUR NAME"
-            className="relative w-full px-4 py-3 terminal-input text-sm uppercase tracking-wide"
-            required
-            disabled={status === "loading"}
-          />
-        </div>
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] opacity-0 group-hover:opacity-20 blur transition duration-300" />
-          <input
-            type="email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            placeholder="YOUR@EMAIL.COM"
-            className="relative w-full px-4 py-3 terminal-input text-sm uppercase tracking-wide"
-            required
-            disabled={status === "loading"}
-          />
-        </div>
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] opacity-0 group-hover:opacity-20 blur transition duration-300" />
-          <textarea
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            placeholder="YOUR MESSAGE..."
-            className="relative w-full px-4 py-3 terminal-input text-sm uppercase tracking-wide min-h-[140px] resize-none"
-            required
-            disabled={status === "loading"}
-          />
-        </div>
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <input
+        type="text"
+        value={formData.name}
+        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        placeholder="Your name"
+        aria-label="Your name"
+        autoComplete="name"
+        className={field}
+        required
+        disabled={status === "loading"}
+      />
+      <input
+        type="email"
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        placeholder="you@email.com"
+        aria-label="Your email"
+        autoComplete="email"
+        className={field}
+        required
+        disabled={status === "loading"}
+      />
+      <textarea
+        value={formData.message}
+        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+        placeholder="What are you working on?"
+        aria-label="Message"
+        className={`${field} min-h-[140px] resize-none`}
+        required
+        disabled={status === "loading"}
+      />
 
+      <div aria-live="polite">
         {status === "success" && (
-          <div className="text-sm font-mono text-[var(--primary)] border-l-2 border-[var(--primary)] pl-4 py-3">
-            [ MESSAGE SENT SUCCESSFULLY ]
-          </div>
+          <p className="px-1 text-sm font-medium text-[#1F8A4C]">Message sent. I&apos;ll get back to you soon.</p>
         )}
+        {status === "error" && <p className="px-1 text-sm font-medium text-accent">{errorMessage}</p>}
+      </div>
 
-        {status === "error" && (
-          <div className="text-sm font-mono text-red-600 border-l-2 border-red-600 pl-4 py-3">
-            [ ERROR: {errorMessage} ]
-          </div>
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="group flex h-12 w-full items-center justify-center gap-2 rounded-full bg-ink text-[15px] font-medium text-bg transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        <span>{status === "loading" ? "Sending…" : "Send message"}</span>
+        {status !== "loading" && (
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
         )}
-
-        <button
-          type="submit"
-          disabled={status === "loading"}
-          className="w-full py-3.5 bg-[var(--primary)] text-white font-bold text-sm uppercase tracking-wider font-mono hover:bg-[var(--primary-dark)] transition-all duration-200 flex items-center justify-center gap-2 group border-2 border-[var(--foreground)] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <span>{status === "loading" ? "SENDING..." : "SEND MESSAGE"}</span>
-          {status !== "loading" && (
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          )}
-        </button>
-      </form>
-    </div>
+      </button>
+    </form>
   );
 }

@@ -11,6 +11,16 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        bg: "var(--bg)",
+        surface: "var(--surface)",
+        line: "var(--line)",
+        ink: "rgb(var(--ink-rgb) / <alpha-value>)",
+        muted: "rgb(var(--muted-rgb) / <alpha-value>)",
+        accent: "rgb(var(--accent-rgb) / <alpha-value>)",
+      },
+      fontFamily: {
+        display: ['"Schibsted Grotesk"', '"Helvetica Neue"', "Arial", "sans-serif"],
+        body: ['"Inter"', "system-ui", "-apple-system", "sans-serif"],
       },
     },
   },
