@@ -7,6 +7,7 @@ Personal portfolio website showcasing projects and contact information.
 - Next.js 14
 - TypeScript
 - Tailwind CSS
+- Motion + OGL (WebGL) for animations
 - Resend (for contact form emails)
 
 ## Getting Started
@@ -43,7 +44,16 @@ Access admin features to add/edit projects:
 
 ## Features
 
-- Project showcase with live metrics
-- Contact form with email notifications
-- Responsive brutalist design
+- Light, single-column layout: name and links, a short intro, and a full-width WebGL drum carousel of project cards
+- Drum carousel with spring physics (drag, fling, scroll or ← →) and motion blur that grows with spin speed; click the front card to open the project
+- Project cards drawn from `data/projects.ts`: name, tagline, the project's icon (`public/projects/`), status and link on a colour gradient. Set `image` on a project to use your own card image instead
+- Contact form (dialog) with email notifications
 - Admin mode for project management
+
+## UI components
+
+- `lib/drum-carousel.ts`: the WebGL drum carousel (OGL, framework-agnostic), wrapped for React in `components/ui/drum-carousel.tsx`
+- `lib/project-cards.ts`: draws the project cards on a canvas
+- `components/ui/blur-fade.tsx`: Magic UI Blur Fade from [21st.dev](https://21st.dev) (used with blur off, as a gentle fade-up)
+
+`components.json` is set up, so more can be added with `npx shadcn@latest add <registry-url>`.

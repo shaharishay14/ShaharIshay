@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { X, Save, Check } from "lucide-react";
 import { Project, MetricType } from "@/data/projects";
+import { projectsFileSource } from "@/lib/projects-code";
 
 interface EditProjectModalProps {
   isOpen: boolean;
@@ -48,7 +49,10 @@ export function EditProjectModal({ isOpen, onClose, project, allProjects }: Edit
       .filter(n => !isNaN(n));
 
     // Create updated project
+    // Start from the original so fields this form doesn't edit (icon, colours, tagline…) survive
+    const { link: _oldLink, metrics: _oldMetrics, ...rest } = project;
     const updatedProject: Project = {
+      ...rest,
       name,
       description,
       status,
@@ -70,24 +74,7 @@ export function EditProjectModal({ isOpen, onClose, project, allProjects }: Edit
       p.name === project.name ? updatedProject : p
     );
 
-    const projectsCode = `export type MetricType = "velocity" | "traffic" | "none";
-
-export interface ProjectMetrics {
-  type: MetricType;
-  data: number[];
-  label?: string;
-  subtitle?: string;
-}
-
-export interface Project {
-  name: string;
-  description: string;
-  status: "Live" | "Beta" | "Coming Soon" | "Development";
-  link?: string;
-  metrics?: ProjectMetrics;
-}
-
-export const projects: Project[] = ${JSON.stringify(updatedProjects, null, 2)};`;
+    const projectsCode = projectsFileSource(updatedProjects);
 
     try {
       await navigator.clipboard.writeText(projectsCode);
