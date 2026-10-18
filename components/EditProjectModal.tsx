@@ -156,6 +156,7 @@ export function EditProjectModal({ isOpen, onClose, project, allProjects }: Edit
               <option value="Beta">Beta</option>
               <option value="Live">Live</option>
               <option value="Coming Soon">Coming Soon</option>
+              <option value="Open Source">Open Source</option>
             </select>
           </div>
 

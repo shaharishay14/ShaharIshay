@@ -11,10 +11,16 @@ export interface ProjectMetrics {
   subtitle?: string;
 }
 
+/** Tabs above the carousel, in display order; the first is selected by default */
+export const SECTIONS = ["ML & Research", "AI Products", "Apps & Products", "Client Work"] as const;
+export type Section = (typeof SECTIONS)[number];
+
 export interface Project {
   name: string;
   description: string;
-  status: "Live" | "Beta" | "Coming Soon" | "Development";
+  status: "Live" | "Beta" | "Coming Soon" | "Development" | "Open Source";
+  /** Which tab the project is listed under */
+  section: Section;
   link?: string;
   /** Short line shown under the name on the card */
   tagline?: string;

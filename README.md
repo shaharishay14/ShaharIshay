@@ -46,9 +46,27 @@ Access admin features to add/edit projects:
 
 - Light, single-column layout: name and links, a short intro, and a full-width WebGL drum carousel of project cards
 - Drum carousel with spring physics (drag, fling, scroll or ← →) and motion blur that grows with spin speed; click the front card to open the project
+- Projects grouped into tabs (`section` on each project; tab order is `SECTIONS` in `data/projects.ts`). Sections with fewer than 3 projects show flat cards instead of the drum
 - Project cards drawn from `data/projects.ts`: name, tagline, the project's icon (`public/projects/`), status and link on a colour gradient. Set `image` on a project to use your own card image instead
 - Contact form (dialog) with email notifications
+- Blog at `/blog`: one Markdown file per post in `content/blog/` (see below)
 - Admin mode for project management
+
+## Writing a blog post
+
+Add `content/blog/<slug>.md`; the file name becomes the URL (`/blog/<slug>`):
+
+```md
+---
+title: My post title
+date: 2026-10-18
+summary: One line shown on the blog index.
+---
+
+Post body in Markdown.
+```
+
+Posts are listed newest first and built at deploy time.
 
 ## UI components
 

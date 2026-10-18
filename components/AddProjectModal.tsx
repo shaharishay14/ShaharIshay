@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { X, Copy, Check } from "lucide-react";
-import { Project, MetricType } from "@/data/projects";
+import { Project, MetricType, SECTIONS, Section } from "@/data/projects";
 
 interface AddProjectModalProps {
   isOpen: boolean;
@@ -13,6 +13,7 @@ export function AddProjectModal({ isOpen, onClose }: AddProjectModalProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<Project["status"]>("Development");
+  const [section, setSection] = useState<Section>(SECTIONS[0]);
   const [link, setLink] = useState("");
   const [metricsType, setMetricsType] = useState<MetricType>("velocity");
   const [copied, setCopied] = useState(false);
@@ -27,6 +28,7 @@ export function AddProjectModal({ isOpen, onClose }: AddProjectModalProps) {
       name,
       description,
       status,
+      section,
       ...(link && { link }),
     };
 
@@ -68,6 +70,7 @@ export function AddProjectModal({ isOpen, onClose }: AddProjectModalProps) {
         setName("");
         setDescription("");
         setStatus("Development");
+        setSection(SECTIONS[0]);
         setLink("");
         onClose();
       }, 2000);
@@ -144,6 +147,24 @@ export function AddProjectModal({ isOpen, onClose }: AddProjectModalProps) {
               <option value="Beta">Beta</option>
               <option value="Live">Live</option>
               <option value="Coming Soon">Coming Soon</option>
+              <option value="Open Source">Open Source</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs font-mono text-gray-500 mb-2 uppercase tracking-wider">
+              SECTION
+            </label>
+            <select
+              value={section}
+              onChange={(e) => setSection(e.target.value as Section)}
+              className="terminal-input w-full px-3 py-2.5 text-sm"
+            >
+              {SECTIONS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
             </select>
           </div>
 

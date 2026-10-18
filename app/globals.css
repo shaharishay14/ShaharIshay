@@ -54,6 +54,83 @@ h3 {
   border-radius: 6px;
 }
 
+/* Blog post body (rendered Markdown) */
+.post-body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgb(var(--ink-rgb) / 0.88);
+}
+.post-body > * + * {
+  margin-top: 1.25em;
+}
+.post-body h2,
+.post-body h3 {
+  font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: rgb(var(--ink-rgb));
+  margin-top: 2em;
+}
+.post-body h2 {
+  font-size: 1.5rem;
+}
+.post-body h3 {
+  font-size: 1.2rem;
+}
+.post-body a {
+  color: rgb(var(--accent-rgb));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.post-body ul,
+.post-body ol {
+  padding-left: 1.4em;
+}
+.post-body ul {
+  list-style: disc;
+}
+.post-body ol {
+  list-style: decimal;
+}
+.post-body li + li {
+  margin-top: 0.4em;
+}
+.post-body blockquote {
+  border-left: 2px solid var(--line);
+  padding-left: 1em;
+  color: rgb(var(--muted-rgb));
+}
+.post-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.1em 0.35em;
+}
+.post-body pre {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.post-body pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.post-body img {
+  border-radius: 12px;
+}
+.post-body hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
 /* Admin modal inputs */
 .terminal-input {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
