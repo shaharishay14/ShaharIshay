@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 const description =
-  "Shahar Ishay — full stack and mobile developer building production systems end to end.";
+  "Shahar Ishay, full stack and AI engineer bringing ML and LLMs into tools people actually use.";
 
 export const metadata: Metadata = {
   title: "Shahar Ishay",
